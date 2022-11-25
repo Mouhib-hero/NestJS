@@ -19,6 +19,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import * as dotenv from 'dotenv';
 import { TodoEntityORM } from './TypeORM/entiteTypeORM/entities/TodoentityORM.entity';
+import { CvModule } from 'cv/cv/cv.module';
+import { SkillModule } from 'skill/skill/skill.module';
+import { UserModule } from 'user/user/user.module';
 dotenv.config()
 
 @Module({
@@ -35,7 +38,10 @@ dotenv.config()
       database: 'nest-exemple', //nom de la base de données à utiliser
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: true, //en mode dev, toute modification qu'on fait au niveua de notre typeORM va etre directement refletee dans la BD
-    })
+    }),
+  CvModule,
+  SkillModule,
+  UserModule,
   ],
   controllers: [
     TestTypeORMController,
